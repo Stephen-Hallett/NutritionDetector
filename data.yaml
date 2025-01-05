@@ -1,0 +1,6 @@
+train: data/combined/train/images
+val: data/combined/valid/images
+test: data/combined/test/images
+
+nc: 2
+names: ['qrcode', 'barcode']
