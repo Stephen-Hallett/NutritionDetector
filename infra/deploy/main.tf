@@ -36,4 +36,8 @@ resource "azurerm_linux_function_app" "fa" {
     }
   }
 
+  application_stack {
+    python_version = 3.12
+  }
+
 }
