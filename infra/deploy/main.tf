@@ -45,7 +45,7 @@ resource "azurerm_function_app" "fa" {
 
   site_config {
     cors {
-      allowed_origins = "*"
+      allowed_origins = ["*"]
     }
   }
 }
