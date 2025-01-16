@@ -34,6 +34,9 @@ resource "azurerm_linux_function_app" "fa" {
     cors {
       allowed_origins = ["*"]
     }
+    application_stack {
+      python_version = "3.9"
+    }
   }
 
 }
