@@ -25,7 +25,7 @@ variable "env" {
   type = string
 }
 
-variable "location" {
-  type    = string
-  default = "newzealandnorth"
-}
+# variable "location" {
+#   type    = string
+#   default = "newzealandnorth"
+# }
