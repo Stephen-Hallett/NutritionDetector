@@ -38,3 +38,7 @@ variable "project_id" {
 variable "env" {
   type = string
 }
+
+variable "backup_location" {
+  type = string
+}
