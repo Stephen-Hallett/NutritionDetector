@@ -1,3 +1,17 @@
+# App service plan
+variable "tier" {
+  type = string
+}
+
+variable "sku" {
+  type = string
+}
+
+# Function app
+variable always_on {
+  type = bool
+}
+
 #AZURE VARIABLES
 variable "subscription_id" {
   type = string
@@ -24,8 +38,3 @@ variable "project_id" {
 variable "env" {
   type = string
 }
-
-# variable "location" {
-#   type    = string
-#   default = "newzealandnorth"
-# }
