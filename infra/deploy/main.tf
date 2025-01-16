@@ -7,30 +7,19 @@ data "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_storage_account" "sa" {
-  name                     = "sa-${var.project_id}-${var.env}-nzn-001"
+  name                     = "sa${var.project_id}${var.env}nzn001"
   resource_group_name      = data.azurerm_resource_group.rg.name
   location                 = data.azurerm_resource_group.rg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
-resource "azurerm_app_service_plan" "asp" {
+resource "azurerm_service_plan" "asp" {
   name                = "asp-${var.project_id}-${var.env}-nzn-001"
   location            = data.azurerm_resource_group.rg.location
   resource_group_name = data.azurerm_resource_group.rg.name
-  kind                = "Linux"
-  reserved            = true
-
-  sku {
-    tier = var.tier
-    size = var.sku
-  }
-
-  lifecycle {
-    ignore_changes = [
-      kind
-    ]
-  }
+  os_type                = "Linux"
+  sku_name = var.sku
 }
 
 resource "azurerm_function_app" "fa" {
