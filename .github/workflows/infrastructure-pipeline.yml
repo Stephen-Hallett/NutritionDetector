@@ -109,6 +109,3 @@ jobs:
           terraform -chdir=${{ env.TF_CONFIG_DIR }} apply \
             -auto-approve \
             -input=false deployment.tfplan
-
-
-
