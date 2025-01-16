@@ -44,9 +44,9 @@ jobs:
     needs: get_branch_name
     name: "Terraform"
     runs-on: ubuntu-latest
-    environment: ${{ needs.get_branch_name.outputs.branchname }}
+    environment: ${{ needs.get_branch_name.outputs.branch_name }}
     env:
-      BRANCH_NAME: ${{ needs.get_branch_name.outputs.branchname }}
+      BRANCH_NAME: ${{ needs.get_branch_name.outputs.branch_name }}
 
     defaults:
       run:
