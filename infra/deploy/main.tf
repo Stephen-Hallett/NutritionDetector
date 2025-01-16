@@ -7,7 +7,7 @@ data "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_storage_account" "sa" {
-  name                     = "sa${var.project_id}${var.env}nzn001"
+  name                     = "sa${var.env}nzn001"
   resource_group_name      = data.azurerm_resource_group.rg.name
   location                 = data.azurerm_resource_group.rg.location
   account_tier             = "Standard"
