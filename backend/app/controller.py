@@ -13,8 +13,8 @@ class Controller:
     def __init__(self) -> None:
         self.logger = logging.getLogger(__name__)
         self.headers = {
-            "x-app-id": os.environ.get("app_id"),
-            "x-app-key": os.environ.get("app_key"),
+            "x-app-id": os.environ.get("APP_ID"),
+            "x-app-key": os.environ.get("APP_KEY"),
         }
 
     @log
