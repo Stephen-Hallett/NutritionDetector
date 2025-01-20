@@ -29,5 +29,5 @@ async def test() -> str:
     return "What up big dog"
 
 
-# async def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
-#     return await func.AsgiMiddleware(app).handle_async(req, context)
+async def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
+    return await func.AsgiMiddleware(app).handle_async(req, context)
