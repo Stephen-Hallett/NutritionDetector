@@ -22,7 +22,7 @@ on:
   push:
     branches: ["dev"]
     paths:
-      - './backend/**'
+      - "backend/**"
   workflow_dispatch:
 
 env:
