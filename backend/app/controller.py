@@ -19,7 +19,7 @@ class Controller:
 
     @log
     def barcode(self, barcode: int) -> schemas.Nutrition:
-        nutrients_raw = requests.get(
+        nutrients_raw = requests.get(  # NOQA
             "https://trackapi.nutritionix.com/v2/search/item/",
             params={"upc": barcode},
             headers=self.headers,
