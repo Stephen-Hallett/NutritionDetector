@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import settings
 from .controller import Controller
+from .schemas import Nutrition
 
 app = FastAPI()
 app.add_middleware(
@@ -19,8 +20,8 @@ con = Controller()
 
 
 @app.post("/barcode")
-async def barcode_info(barcode: int) -> str:
-    pass
+async def barcode_info(upc: int) -> Nutrition:
+    return con.barcode(upc)
 
 
 @app.get("/test")
