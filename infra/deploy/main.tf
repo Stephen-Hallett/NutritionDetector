@@ -42,7 +42,7 @@ resource "azurerm_linux_function_app" "fa" {
 
 resource "azurerm_cognitive_account" "oai" {
   name                = "oai-${var.project_id}-${var.env}-eau-001"
-  location            = data.azurerm_resource_group.rg.location
+  location            = var.backup_location
   resource_group_name = data.azurerm_resource_group.rg.name
   kind                = "OpenAI"
   sku_name            = "S0"
