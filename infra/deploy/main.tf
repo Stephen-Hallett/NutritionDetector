@@ -38,5 +38,26 @@ resource "azurerm_linux_function_app" "fa" {
       python_version = "3.9"
     }
   }
-
 }
+
+resource "azurerm_cognitive_account" "oai" {
+  name                = "oai-${var.project_id}-${var.env}-eau-001"
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+  kind                = "OpenAI"
+  sku_name            = "S0"
+}
+
+# resource "azurerm_cognitive_deployment" "oai" {
+#   name                 = "oai-${var.project_id}-${var.env}-eau-001"
+#   cognitive_account_id = azurerm_cognitive_account.example.id
+#   model {
+#     format  = "OpenAI"
+#     name    = "text-curie-001"
+#     version = "1"
+#   }
+
+#   sku {
+#     name = "Standard"
+#   }
+# }
