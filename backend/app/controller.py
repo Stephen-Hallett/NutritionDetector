@@ -25,7 +25,7 @@ class Controller:
         self.model = BlipForConditionalGeneration.from_pretrained(
             "Salesforce/blip-image-captioning-base"
         )
-        self.pretext = "a meal with ingredients including "
+        self.pretext = "a photograph of "
 
     @log
     def barcode(self, barcode: int) -> schemas.Nutrition:
