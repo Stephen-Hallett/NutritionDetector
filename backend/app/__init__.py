@@ -1,6 +1,9 @@
+from io import BytesIO, StringIO
+
 import azure.functions as func
-from fastapi import FastAPI
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from PIL import Image
 
 from .config import settings
 from .controller import Controller
@@ -22,6 +25,35 @@ con = Controller()
 @app.post("/barcode")
 async def barcode_info(upc: int) -> Nutrition:
     return con.barcode(upc)
+
+
+@app.post("/describe")
+async def describe(file: UploadFile = File(...)) -> str:
+    try:
+        contents = await file.read()
+        image = Image.open(BytesIO(contents))
+        image = image.convert("RGB")
+
+        return con._describe_image(image)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error processing image: {e!s}")
+
+
+@app.post("/image/calories")
+async def calories(file: UploadFile = File(...)) -> Nutrition:
+    try:
+        contents = await file.read()
+        image = Image.open(BytesIO(contents))
+        image = image.convert("RGB")
+
+        return con.calories(image)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error processing image: {e!s}")
+
+
+@app.post("/text/calories")
+async def calories(context: str = Form(...)) -> Nutrition:
+    return con.calories(context)
 
 
 @app.get("/test")
