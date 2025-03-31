@@ -15,7 +15,7 @@ resource "azurerm_storage_account" "sa" {
 }
 
 resource "azurerm_service_plan" "asp" {
-  name                = "asp-${var.project_id}-${var.env}-eau-001"
+  name                = "asp-${var.project_id}-${var.env}-eau-002"
   location            = data.azurerm_resource_group.rg.location
   resource_group_name = data.azurerm_resource_group.rg.name
   os_type             = "Linux"
@@ -23,7 +23,7 @@ resource "azurerm_service_plan" "asp" {
 }
 
 resource "azurerm_linux_function_app" "fa" {
-  name                       = "fa-${var.project_id}-${var.env}-eau-001"
+  name                       = "fa-${var.project_id}-${var.env}-eau-002"
   location                   = azurerm_service_plan.asp.location
   resource_group_name        = data.azurerm_resource_group.rg.name
   service_plan_id            = azurerm_service_plan.asp.id
