@@ -3,11 +3,11 @@ data "azurerm_client_config" "current" {}
 data "azurerm_subscription" "primary" {}
 
 data "azurerm_resource_group" "rg" {
-  name     = "rg-${var.project_id}-${var.env}-nzn-001"
+  name     = "rg-${var.project_id}-${var.env}-eau-001"
 }
 
 resource "azurerm_storage_account" "sa" {
-  name                     = "sa${var.env}nzn001"
+  name                     = "sa${var.env}eau001"
   resource_group_name      = data.azurerm_resource_group.rg.name
   location                 = data.azurerm_resource_group.rg.location
   account_tier             = "Standard"
@@ -16,7 +16,7 @@ resource "azurerm_storage_account" "sa" {
 
 resource "azurerm_service_plan" "asp" {
   name                = "asp-${var.project_id}-${var.env}-eau-001"
-  location            = var.backup_location
+  location            = data.azurerm_resource_group.rg.location
   resource_group_name = data.azurerm_resource_group.rg.name
   os_type               = "Linux"
   sku_name            = var.sku
@@ -35,7 +35,7 @@ resource "azurerm_linux_function_app" "fa" {
       allowed_origins = ["*"]
     }
     application_stack {
-      python_version = "3.9"
+      python_version = "3.11"
     }
   }
 
