@@ -3,7 +3,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.0.2"
+      version = "~> 4.22.0"
     }
   }
 
@@ -20,7 +20,7 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    storage_account_name = "stterraformdevnzn001"
+    storage_account_name = "stterraformdeveau003"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
   }
